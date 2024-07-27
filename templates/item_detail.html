@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Detail</title>
+</head>
+<body>
+    <h1>{{ item.title }}</h1>
+    <img src="{{ item.image_url }}" alt="{{ item.title }}" style="width: 300px; height: 300px;">
+    <p>{{ item.description }}</p>
+    <small>Posted on {{ item.created_at }}</small>
+    <br>
+    <a href="{{ url_for('main') }}">Back to main</a>
+</body>
+</html>
