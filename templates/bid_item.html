@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Item</title>
+    <title>Bid on Item</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/BagguZangter.css') }}">
     <style>
         .post-item-form {
@@ -93,8 +93,8 @@
                 <a href="index.html">BagguZangter</a>
             </div>
             <div class="post-item-form">
-                <h1>Post a new item</h1>
-                <form action="{{ url_for('post_item') }}" method="post" enctype="multipart/form-data">
+                <h1>Bid on this item</h1>
+                <form action="{{ url_for('bid_item', item_id=item_id) }}" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="title">Title:</label>
                         <input type="text" id="title" name="title" required>
@@ -111,7 +111,7 @@
                         <img id="preview" src="#" alt="Image Preview" style="display: none;">
                     </div>
                     <div>
-                        <button type="submit">Post</button>
+                        <button type="submit">Bid</button>
                     </div>
                 </form>
             </div>

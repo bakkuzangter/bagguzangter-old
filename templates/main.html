@@ -3,26 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/BagguZangter.css') }}">
+    <title>BagguZangter</title>
+    <style>
+        .box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .box img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+        .box .info {
+            display: flex;
+            flex-direction: column;
+        }
+        .box .info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+        .box .info p {
+            margin: 0 0 10px 0;
+            font-size: 1em;
+        }
+        .box .info small {
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome, {{ username }}!</h1>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <div id="wrap">
+        <!-- container -->
+        <div class="container">
+            <!-- intro -->
+            
+            <!-- header -->
+            <div class="inner">
+                <nav class="gnb">
+                    <div class="menu-list">
+                        <ul class="top-menu clear">
+                            <li><a href="#a">Search</a></li>
+                            <li><a href="{{ url_for('login') }}">Login</a></li>
+                            <li><a href="#a">Wish</a></li>
+                            <li><a href="#a">Cart <!-- <span class="cart">(0)</span> --></a></li>
+                        </ul>
 
-    <h2>Items for Trade</h2>
-    <a href="{{ url_for('post_item') }}">Post a new item</a>
-
-    <div class="item-list">
-        {% for item in items %}
-            <div class="item">
-                <a href="{{ url_for('item_detail', item_id=item.id) }}">
-                    <img src="{{ item.image_url }}" alt="{{ item.title }}" style="width: 100px; height: 100px;">
-                    <h3>{{ item.title }}</h3>
+                        <ul class="categorie">
+                            <li><a href="#a">물품교환</a></li>
+                            <li><a href="#a">내가 올린 물품</a></li>
+                            <li><a href="#a">이번주 급상승 물품</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- btnBar -->
+                <a href="#" class="btn-menu">
+                    <span class="item"></span>
+                    <span class="item"></span>
+                    <span class="item"></span>
                 </a>
-                <p>{{ item.description }}</p>
-                <small>Posted on {{ item.created_at }}</small>
             </div>
-        {% endfor %}
+            <div class="contents">
+                <h1>Welcome, {{ nickname }}!</h1>
+                <a href="{{ url_for('logout') }}">Logout</a>
+
+                <h2>Items for Trade</h2>
+                <a href="{{ url_for('post_item') }}">Post a new item</a>
+                <div class="title">
+                    <a href="index.html">BagguZangter</a>
+                </div>
+                <video src="{{ url_for('static', filename='img/video2.mp4') }}" autoplay muted loop></video>
+                <div class="box-Area">
+                    {% for item in items[::-1] %}
+                        <div class="box">
+                            <a href="{{ url_for('item_detail', item_id=item.id) }}">
+                                <img src="{{ item.image_url }}" alt="{{ item.title }}" style="width: 100px; height: 100px;">
+                            </a>
+                            <div class="info">
+                                <h3><a href="{{ url_for('item_detail', item_id=item.id) }}">{{ item.title }}</a></h3>
+                                <p>{{ item.description }}</p>
+                                <small>Posted on {{ item.created_at }}</small>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- main -->
+
+            <!--fixedBanner -->
+            <section class="fixed-banner">
+                <div class="fixed-chat">
+                    <img src="{{ url_for('static', filename='img/add.png') }}" alt="logo">
+                </div>
+            </section>      
+
+        </div>
+        <!-- //container -->
     </div>
+    <!-- //wrap -->
+    <script src="{{ url_for('static', filename='js/BagguZangter.js') }}"></script>
 </body>
 </html>

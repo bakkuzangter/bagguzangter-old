@@ -4,13 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Item Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/BagguZangter.css') }}">
+    <style>
+        .item-detail {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+        .item-detail h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .item-detail img {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 100%;
+            height: auto;
+        }
+        .item-detail p {
+            font-size: 1.2em;
+        }
+        .item-detail small {
+            display: block;
+            text-align: center;
+            color: #666;
+            margin-top: 10px;
+        }
+        .bid-list {
+            margin-top: 40px;
+        }
+        .bid-list .bid-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .bid-list .bid-item img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+        .bid-list .bid-item .info {
+            display: flex;
+            flex-direction: column;
+        }
+        .bid-list .bid-item .info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+        .bid-list .bid-item .info p {
+            margin: 0 0 10px 0;
+            font-size: 1em;
+        }
+        .bid-list .bid-item .info small {
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ item.title }}</h1>
-    <img src="{{ item.image_url }}" alt="{{ item.title }}" style="width: 300px; height: 300px;">
-    <p>{{ item.description }}</p>
-    <small>Posted on {{ item.created_at }}</small>
-    <br>
-    <a href="{{ url_for('main') }}">Back to main</a>
+    <div id="wrap">
+        <div class="inner">
+            <nav class="gnb">
+                <div class="menu-list">
+                    <ul class="top-menu clear">
+                        <li><a href="#a">Search</a></li>
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <li><a href="#a">Wish</a></li>
+                        <li><a href="#a">Cart</a></li>
+                    </ul>
+
+                    <ul class="categorie">
+                        <li><a href="#a">New Collection</a></li>
+                        <li><a href="#a">Shop</a></li>
+                        <li><a href="#a">Signature</a></li>
+                        <li><a href="#a">Collection</a></li>
+                        <li><a href="#a">Journal</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- btnBar -->
+            <a href="#" class="btn-menu">
+                <span class="item"></span>
+                <span class="item"></span>
+                <span class="item"></span>
+            </a>
+        </div>
+        <div class="contents">
+            <div class="title">
+                <a href="index.html">BagguZangter</a>
+            </div>
+            <div class="item-detail">
+                <h1>{{ item.title }}</h1>
+                <img src="{{ item.image_url }}" alt="{{ item.title }}">
+                <p>{{ item.description }}</p>
+                <small>Posted on {{ item.created_at }} by {{ item.nickname }}</small>
+                <a href="{{ url_for('main') }}">Back to main</a>
+                <br>
+                <a href="{{ url_for('bid_item', item_id=item.id) }}">Bid on this item</a>
+            </div>
+            <div class="bid-list">
+                <h2>Bids</h2>
+                {% for bid in bids %}
+                    <div class="bid-item">
+                        <img src="{{ bid.image_url }}" alt="{{ bid.title }}">
+                        <div class="info">
+                            <h3>{{ bid.title }}</h3>
+                            <p>{{ bid.description }}</p>
+                            <small>Posted on {{ bid.created_at }} by {{ bid.nickname }}</small>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- //inner -->
+    <footer>
+        <div class="f-css">
+            <p>고객센터</p>
+            <p class="f-bold">1541-1633 <span>l</span> 평일 오전 10시 ~ 오후5시</p>
+            <p class="f-bold">dawon2275@naver.com</p>
+        </div>
+        <div class="f-news">
+            <ul>
+                <li><a href="#">뉴스레터</a></li>
+                <li><a href="#">온라인 서포트</a></li>
+                <li><a href="#">회사 소개</a></li>
+            </ul>
+        </div>
+        <div class="f-sns">
+            <ul>
+                <li><a href="#">인스타그램</a></li>
+                <li><a href="#">카카오톡</a></li>
+                <li><a href="#">뮤직</a></li>
+            </ul>
+        </div>
+        <span class="copy">&copy;2024 Facade BagguZangter</span>
+    </footer>
+    <!-- //footer -->
 </body>
 </html>
