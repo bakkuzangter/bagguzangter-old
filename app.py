@@ -88,10 +88,11 @@ def main():
     
     # convert image paths to URLs
     items = [dict(item) for item in items]
+    nickname = session['nickname']
     for item in items:
         item['image_url'] = url_for('static', filename=convert_path_to_url(item['image_url']))
     
-    return render_template('main.html', username=session['username'], items=items)
+    return render_template('main.html', username=session['username'], items=items, nickname=nickname)
 
 @app.route('/logout')
 def logout():
