@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 html,head,body,div,p,h1,h2,h3,h4,h5,h6,blockquote,ul,ol,li,dl,dt,dd,address,form,fieldset,legend,table,tr,td,th,thead,tbody,tfoot,caption,header,nav,aside,section,article,footer,main,figure,figcaption {margin: 0; padding: 0;}
-
+html {width: 450px; margin: 0 auto;}
 header,nav,section,article,aside,footer,main,figure {display: block;} /*ie10이하에서 html5태그를 인식하지 못하는 부분에 대한 재선언*/
 
 ul li {list-style: none;}
@@ -17,7 +17,6 @@ table {border-collapse: collapse;}
 
 .clear:before,
 .clear:after {content: ''; display: block; clear: both;}
-
 
 
 

@@ -1,23 +1,24 @@
 @charset "utf-8";
 @import url(reset.css);
 
-@media screen and (min-width:400px) and (max-width:640px) {
-    .wrap{ width: 100%; height: 150vh; overflow: hidden;}
-    .container {width: 100%; height: 100vh;
-    }
-    .inner {width: 100%; height: 100vh; }
+    html {width: 450px; margin: 0 auto;}
+    #wrap{ width: 100%; height: 150vh; overflow: hidden; margin: 0 auto;}
+    .container {width: 450px; height: 100vh; margin: 0 auto;}
+    .contents {width: 450px;}
+    .inner {width: 450px; height: 100vh;margin: 0 auto; }
     /* intro*/
-    .intro {width: 100%; height: 170vh; position: relative; background: #F2A03D; z-index: 999; }
+    .intro {width: 450px; height: 170vh; position: relative; background: #F2A03D; z-index: 999; }
     .intro > h2 {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #010326; font-size: 26px; opacity: 0;}
     .intro > img {width: 40%; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -40%); opacity: 0;}
 
     /* btnBar */
+    .btnBar {width: 450px; height: 90px; position: relative;}
     .btn-menu {
         position: absolute;
-        top: 0; right: 10px;
+        top: 0; right: 0;
         display: inline-block;
         height: 10px;
-        margin: 30px 20px;
+        margin: 30px 10px;
         transition: all 0.3s;
         z-index: 99;
         
@@ -41,7 +42,7 @@
 
     /* menu-List */
     .menu-list { 
-        width: 100%; height: 1000px;
+        width: 450px; height: 1000px;
         position: fixed;
         top: 0;
         background: #fffbef;
@@ -82,13 +83,20 @@
     .menu-list select option {color: #000;}
 
     /* main */
-    .contents {width: 100%; height:100vh; position: absolute; top: 0; }
-    .contents .title  {text-align: center; height: 50px; margin: 20px 0; font-size: 23px;}
+    .contents {width: 450px; height:100vh; position: absolute; top: 0; }
+    .contents .title  {text-align: left;width: 50%;  height: 50px; margin: 20px 0; font-size: 23px;}
     .contents .title a {display: block;}
     .contents video {width: 100%;}
     .contents .box-Area { width: 100%; height: 100vh; margin: 30px 0;}
-    .contents .box {height: 85px; padding: 20px; margin: 20px; border-radius: 8px;background-color: #ffe0b2;box-shadow: 0 1px 3px rgba(0,0,0,0.1);}
-    
+    .contents .box {height: 85px; padding: 20px 10px 30px; margin: 20px; }
+    .box {display: flex;align-items: center;margin-bottom: 20px;padding: 10px;border-bottom: 1px solid #ccc;}
+    .box img {width: 150px;height: 150px; margin-right: 20px;object-fit: cover; border: 1px solid #ccc; border-radius: 10px;}
+    .box .info { display: flex; flex-direction: column;}
+    .box .info h3 { margin: 0 0 10px 0;font-size: 1.2em; font-weight: 700;}
+    .box .info p {margin: 0 0 10px 0; font-size: 1em; color: #666; font-weight: 700; }
+    .box .info small {color: #666;} 
+
+
     /* login */
     .login {
         position: absolute;
@@ -115,23 +123,23 @@
         border: none;
         background: none;
     }
-    .login .btn.btn-danger {background: #111; color:#fff; margin-bottom: 5px;}
+    .login .btn.btn-danger {width: 100%; background: #111; color:#fff; margin-bottom: 5px;}
     .login .btn.btn-primary {border: 1px solid #ccc;}
 
     /* ------------------------ fixedBanner */
 
     .fixed-banner {
+        width: 450px;
         position: fixed;
-        bottom: 30px; right: 25px;
+        bottom: 0; 
         cursor: pointer;
         z-index: 51;
     }
-    .fixed-banner .fixed-chat img{
-        width: 70px;
-    }
+    .fixed-banner > img {width: 10%; margin-left: 85%;}
+    .fixed-banner > .fixfixed-chat {width: 100%;height: 80px; }
 
     /* footer */
-    footer {width: 100%; background: #fff;}
+    footer {width: 100%; background: #fff; margin-top: 80px;}
     footer > div {
         font-size: 13px; 
         margin-bottom: 20px;
@@ -224,5 +232,4 @@ label {margin-left: 3px;}
     outline: none;
     background: #fff;
     color: #000;
-}
 }
